@@ -1,8 +1,11 @@
+import * as projectItem from './projectItem';
+
 function createProjectContainer() {
 	let projectItems = [];
     let currentProject = null;
-	function addItem(projectItem) {
-		projectItems.push(projectItem);
+	function addItem(title, description) {
+		let item = projectItem.createProjectItem(title, description);
+		projectItems.push(item);
 	}
 	function getItems() {
 		return projectItems;
