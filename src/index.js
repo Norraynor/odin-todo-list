@@ -1,6 +1,6 @@
 import "./style.css";
 import * as projectContainer from "./modules/projectContainer";
-
+import * as DOMController from './modules/DOMController';
 function component() {
 	const element = document.createElement("div");
 	const container = projectContainer.createProjectContainer();
@@ -18,7 +18,8 @@ function component() {
 
 	// Lodash, currently included via a script, is required for this line to work
 	//element.innerHTML = _.join(["Hello", "webpack"], " ");
-    console.log('lul')
+	console.log('lul')
+	DOMController.setProjectContainer(container);
 	return element;
 }
 
