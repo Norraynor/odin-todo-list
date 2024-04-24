@@ -9,6 +9,7 @@ function component() {
 	let currentProject = container.getCurrentProject();
 		
 	currentProject.addItem('example', 'example todo', new Date(), 1);
+	currentProject.selectTodo(0)
 
 	console.log(container.getItems());
 
@@ -19,7 +20,9 @@ function component() {
 	// Lodash, currently included via a script, is required for this line to work
 	//element.innerHTML = _.join(["Hello", "webpack"], " ");
 	console.log('lul')
+	console.log(container.getCurrentProject().getCurrentTodo())
 	DOMController.setProjectContainer(container);
+	element.appendChild(DOMController.drawMainContainer());
 	return element;
 }
 

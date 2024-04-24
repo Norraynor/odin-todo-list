@@ -3,6 +3,7 @@ import * as todoItem from './todoItem';
 function createProjectItem(title, description) {
     let todoItems = [];
     let complete = false;
+    let currentTodo = todoItems[0] ? todoItems[0] : null;
 
     function addItem(title, description, dueDate, priority) {
         let item = todoItem.createTodoItem(title, description, dueDate, priority);
@@ -13,6 +14,12 @@ function createProjectItem(title, description) {
     }
     function changeItemPriority(index, priority) {
         todoItem.changePriority(todoItems[index], priority);
+    }
+    function selectTodo(index) {
+        currentTodo = todoItems[index];
+    }
+    function getCurrentTodo() {
+        return currentTodo;
     }
     function setItemComplete(index, bool) {
         todoItem.setComplete(todoItems[index], bool);
@@ -37,6 +44,8 @@ function createProjectItem(title, description) {
 			getItems,
 			changeItemPriority,
 			setItemComplete,
+            selectTodo,
+            getCurrentTodo,
             
 		};
 }
