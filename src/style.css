@@ -4,7 +4,7 @@ body{
 }
 .main-container{
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 4fr 2fr;
     grid-template-rows: 1fr;
 }
 
@@ -100,28 +100,54 @@ body{
 .todo-container{
     background-color: rgb(189, 189, 189);
     display: grid;
-    grid-template: repeat(3,1fr) / 1fr;
+    grid-template: 1fr repeat(3,2fr) / 1fr;
     padding: 16px;
+    gap: 8px;
+    row-gap: 8px;
+}
+.todo,.todo-header{
+    display: grid;
+    grid-template-columns: 1fr 5fr 3fr;
     gap: 16px;
-    row-gap: 32px;
+    align-items: center;
 }
 .todo{
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    grid-template-rows: fit-content(40px) 1fr;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.todo:hover{
+    background-color: #298e46;
+}
+.todo-priority,.todo-title,.todo-due-date{
+    padding:8px
 }
 .title{
     font-size: 1.5rem;
     align-self: self-end;
 }
-.projects-container{
+.details{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
     gap: 24px;
+}
+.details-header{
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+.details-title{
+    justify-self: start;
+    padding: 8px;
+}
+.details-date{
+    justify-self: start;
+    padding: 8px;
+}
+.details-description{
+    padding:8px;
 }
 .card{
     background-color: white;

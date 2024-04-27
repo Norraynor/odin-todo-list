@@ -40,6 +40,21 @@ function drawProjectContainer(){
 function drawTodoContainer(project) {
     const todoContainer = document.createElement('div');
     todoContainer.classList.add('todo-container');
+    const header = document.createElement('div');
+    header.classList.add('todo-header');
+    const hTitle = document.createElement("div");
+    hTitle.classList.add("todo-title");
+    hTitle.textContent = 'Title';
+    const hPriority = document.createElement("div");
+    hPriority.classList.add("todo-priority");
+    hPriority.textContent = 'Priority';
+    const hDueDate = document.createElement("div");
+    hDueDate.classList.add("todo-due-date");
+    hDueDate.textContent = 'Due date';
+    header.appendChild(hPriority);
+    header.appendChild(hTitle);
+    header.appendChild(hDueDate);
+    todoContainer.appendChild(header);
     //add todos here
     const selectedProjectItems = project.getItems();
     selectedProjectItems.forEach(element => {
@@ -54,8 +69,8 @@ function drawTodoContainer(project) {
         const dueDate = document.createElement("div");
         dueDate.classList.add("todo-due-date");
         dueDate.textContent = element.dueDate;
-        todo.appendChild(title);
         todo.appendChild(priority);
+        todo.appendChild(title);
         todo.appendChild(dueDate);
         todoContainer.appendChild(todo);
     })

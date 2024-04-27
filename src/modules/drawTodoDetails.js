@@ -13,9 +13,12 @@ function drawTodoDetails(todo) {
     const description = document.createElement('div');
 	description.classList.add('details-description');
 	description.textContent = todo.description;
-	container.appendChild(priority);
-	container.appendChild(title);
-    container.appendChild(dueDate);
+	const titleContainer = document.createElement('div');
+	titleContainer.classList.add('details-header')
+	titleContainer.appendChild(title);
+	titleContainer.appendChild(priority);
+	titleContainer.appendChild(dueDate);
+	container.appendChild(titleContainer);
     container.appendChild(description);
 
 	return container;
