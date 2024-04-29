@@ -1,3 +1,5 @@
+import { drawProject } from './drawProject';
+import { drawTodoCard } from './drawTodo';
 import * as drawTodoDetails from './drawTodoDetails'
 
 const mainContainer = document.querySelector('.container');
@@ -23,15 +25,15 @@ function drawMainContainer() {
 function drawProjectContainer(){
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('project-container');
+    const newButton = document.createElement('button');
+    newButton.classList.add('add-project');
+    newButton.classList.add('button-3');
+    newButton.textContent = '+ NEW +';
+    projectContainer.appendChild(newButton);
     //add projects here
-    const currentProjects = getProjectContainer().getItems()
-    currentProjects.forEach(element => {
-        const project = document.createElement('div');
-        project.classList.add("project");
-        const title = document.createElement('div');
-        title.classList.add('project-title');
-        title.textContent = element.title;
-        project.appendChild(title);
+    const currentProjects = getProjectContainer().getItems();
+    currentProjects.forEach((element,index) => {
+        const project = drawProject(element,index)
         projectContainer.appendChild(project);
     });
     return projectContainer;
@@ -40,6 +42,11 @@ function drawProjectContainer(){
 function drawTodoContainer(project) {
     const todoContainer = document.createElement('div');
     todoContainer.classList.add('todo-container');
+    const newButton = document.createElement("button");
+    newButton.classList.add("add-todo");
+    newButton.classList.add("button-3");
+    newButton.textContent = "+ ADD +";
+    todoContainer.appendChild(newButton);
     const header = document.createElement('div');
     header.classList.add('todo-header');
     const hTitle = document.createElement("div");
@@ -57,21 +64,8 @@ function drawTodoContainer(project) {
     todoContainer.appendChild(header);
     //add todos here
     const selectedProjectItems = project.getItems();
-    selectedProjectItems.forEach(element => {
-        const todo = document.createElement("div");
-        todo.classList.add("todo");
-        const title = document.createElement("div");
-        title.classList.add("todo-title");
-        title.textContent = element.title;
-        const priority = document.createElement("div");
-        priority.classList.add("todo-priority");
-        priority.textContent = element.priority;
-        const dueDate = document.createElement("div");
-        dueDate.classList.add("todo-due-date");
-        dueDate.textContent = element.dueDate;
-        todo.appendChild(priority);
-        todo.appendChild(title);
-        todo.appendChild(dueDate);
+    selectedProjectItems.forEach((element,index) => {
+        const todo = drawTodoCard(element,index);
         todoContainer.appendChild(todo);
     })
     return todoContainer;

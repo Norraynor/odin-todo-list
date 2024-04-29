@@ -20,7 +20,7 @@ body{
 }
 .project{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 5fr 1fr;
     align-items: center;
     gap: 4px;
     padding-left: 8px;
@@ -107,7 +107,7 @@ body{
 }
 .todo,.todo-header{
     display: grid;
-    grid-template-columns: 1fr 5fr 3fr;
+    grid-template-columns: 1fr 5fr 3fr 1fr;
     gap: 16px;
     align-items: center;
 }

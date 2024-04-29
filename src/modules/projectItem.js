@@ -9,6 +9,9 @@ function createProjectItem(title, description) {
         let item = todoItem.createTodoItem(title, description, dueDate, priority);
         todoItems.push(item);
     }
+    function removeItem(index) {
+        todoItems.splice(index, 1);
+    }
     function getItems() {
         return todoItems
     }
@@ -40,7 +43,8 @@ function createProjectItem(title, description) {
     return {
 			title,
 			description,
-			addItem,
+            addItem,
+            removeItem,
 			getItems,
 			changeItemPriority,
 			setItemComplete,
