@@ -9,8 +9,12 @@ function drawProject(project, index) {
 	const removeButton = document.createElement("button");
 	removeButton.classList.add("remove-todo");
 	removeButton.textContent = "remove";
+	if (project.getSelected()) {
+		container.classList.add('selected');
+	} else {
+		container.classList.remove('selected');
+	}
 	container.appendChild(removeButton);
-
 	return container;
 }
 

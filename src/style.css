@@ -244,3 +244,7 @@ body{
 .trendy-username{
     align-self: self-start;
 }
+
+.selected{
+    background-color: red;
+}

@@ -20,6 +20,8 @@ function component() {
 	currentProject.addItem("example4", "example todo", new Date(), 4);
 	currentProject.selectTodo(0);
 
+	container.selectProject(0);
+
 	console.log(container.getItems());
 
 	// const defaultProjectDiv = document.createElement('div');
@@ -32,6 +34,7 @@ function component() {
 	console.log(container.getCurrentProject().getCurrentTodo())
 	DOMController.setProjectContainer(container);
 	element.appendChild(DOMController.drawMainContainer());
+	DOMController.setTopElement(element);
 	return element;
 }
 
