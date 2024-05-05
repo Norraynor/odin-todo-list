@@ -14,6 +14,9 @@ function drawProject(project, index) {
 	} else {
 		container.classList.remove('selected');
 	}
+	removeButton.addEventListener('click', (e) => {
+		//remove item
+	})
 	container.appendChild(removeButton);
 	return container;
 }

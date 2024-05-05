@@ -1,4 +1,4 @@
-function drawTodoCard(todo,index) {
+function drawTodoCard(project, todo,index) {
     const container = document.createElement('div');
     container.classList.add('todo');
     container.setAttribute('index',index)
@@ -23,6 +23,11 @@ function drawTodoCard(todo,index) {
     } else {
         container.classList.remove("selected");
     }
+	removeButton.addEventListener("click", (e) => {
+        //remove item
+        console.log(e.target.parentNode.getAttribute('index'));
+        project.removeItem(e.target.parentNode.getAttribute("index"));
+	});
     container.appendChild(removeButton);
 
     return container;

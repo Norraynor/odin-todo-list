@@ -79,7 +79,7 @@ function drawTodoContainer(project) {
     //add todos here
     const selectedProjectItems = project?.getItems();
     selectedProjectItems.forEach((element,index) => {
-        const todo = drawTodoCard(element, index);
+        const todo = drawTodoCard(project,element, index);
         todo.addEventListener("click", () => {
 					//select
 					getProjectContainer().getCurrentProject().selectTodo(+todo.getAttribute("index"));
