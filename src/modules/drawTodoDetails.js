@@ -11,7 +11,7 @@ function drawTodoDetails(todo) {
 	description.classList.add('details-description');
 	const titleContainer = document.createElement('div');
 	titleContainer.classList.add('details-header')
-	if (todo !== null) {		
+	if (todo != null) {		
 		title.textContent = todo.title;
 		dueDate.textContent = todo.dueDate;
 		priority.textContent = todo.priority;

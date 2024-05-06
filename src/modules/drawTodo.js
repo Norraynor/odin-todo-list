@@ -25,7 +25,6 @@ function drawTodoCard(project, todo,index) {
     }
 	removeButton.addEventListener("click", (e) => {
         //remove item
-        console.log(e.target.parentNode.getAttribute('index'));
         project.removeItem(e.target.parentNode.getAttribute("index"));
 	});
     container.appendChild(removeButton);

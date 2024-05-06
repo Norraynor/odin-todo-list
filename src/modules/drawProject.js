@@ -1,4 +1,4 @@
-function drawProject(project, index) {
+function drawProject(projectContainer, project, index) {
 	const container = document.createElement("div");
 	container.classList.add("project");
 	container.setAttribute("index", index);
@@ -16,6 +16,7 @@ function drawProject(project, index) {
 	}
 	removeButton.addEventListener('click', (e) => {
 		//remove item
+        projectContainer.removeItem(e.target.parentNode.getAttribute("index"));
 	})
 	container.appendChild(removeButton);
 	return container;

@@ -19,7 +19,7 @@ function drawMainContainer() {
     const main = document.createElement('div');
     main.classList.add('main-container');
     //add project container // todo container // todo details
-    main.appendChild(drawProjectContainer());
+    main.appendChild(drawProjectContainer(getProjectContainer()));
     main.appendChild(drawTodoContainer(getProjectContainer().getCurrentProject()));
     main.appendChild(drawDetailsContainer(getProjectContainer().getCurrentProject().getCurrentTodo()))
     return main;
@@ -30,27 +30,27 @@ function reDraw() {
     mainContainer.appendChild(drawMainContainer());
 }
 
-function drawProjectContainer(){
-    const projectContainer = document.createElement('div');
-    projectContainer.classList.add('project-container');
+function drawProjectContainer(projectContainer){
+    const container = document.createElement('div');
+    container.classList.add('project-container');
     const newButton = document.createElement('button');
     newButton.classList.add('add-project');
     newButton.classList.add('button-3');
     newButton.textContent = '+ NEW +';
-    projectContainer.appendChild(newButton);
+    container.appendChild(newButton);
     //add projects here
     const currentProjects = getProjectContainer().getItems();
     currentProjects.forEach((element,index) => {
-        const project = drawProject(element, index);
+        const project = drawProject(projectContainer, element, index);
         project.addEventListener('click', () => {
             //select
             getProjectContainer().selectProject(+project.getAttribute('index'));
             //trigger refresh of todos
             reDraw();
         })
-        projectContainer.appendChild(project);
+        container.appendChild(project);
     });
-    return projectContainer;
+    return container;
 }
 
 function drawTodoContainer(project) {
@@ -77,17 +77,21 @@ function drawTodoContainer(project) {
     header.appendChild(hDueDate);
     todoContainer.appendChild(header);
     //add todos here
-    const selectedProjectItems = project?.getItems();
-    selectedProjectItems.forEach((element,index) => {
-        const todo = drawTodoCard(project,element, index);
-        todo.addEventListener("click", () => {
-					//select
-					getProjectContainer().getCurrentProject().selectTodo(+todo.getAttribute("index"));
-					//trigger refresh of todos
-					reDraw();
-				});
-        todoContainer.appendChild(todo);
-    })
+    if (project != null) {        
+        const selectedProjectItems = project?.getItems();
+		selectedProjectItems.forEach((element, index) => {
+			const todo = drawTodoCard(project, element, index);
+			todo.addEventListener("click", () => {
+				//select
+				getProjectContainer()
+					.getCurrentProject()
+					.selectTodo(+todo.getAttribute("index"));
+				//trigger refresh of todos
+				reDraw();
+			});
+			todoContainer.appendChild(todo);
+		});
+    }
     return todoContainer;
 }
 

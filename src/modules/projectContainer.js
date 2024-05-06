@@ -2,10 +2,18 @@ import * as projectItem from './projectItem';
 
 function createProjectContainer() {
 	let projectItems = [];
-	let currentProject = projectItems[0] ? projectItems[0] : null;
+	let currentProject = projectItems[0] != null ? projectItems[0] : null;
+	
 	function addItem(title, description) {
 		let item = projectItem.createProjectItem(title, description);
 		projectItems.push(item);
+	}
+    function removeItem(index) {
+		projectItems.splice(index, 1);
+		currentProject = projectItems[0] != null ? projectItems[0] : null;
+		if (currentProject != null) {
+			currentProject.setSelected(true);
+		}
 	}
 	function getItems() {
 		return projectItems;
@@ -15,13 +23,16 @@ function createProjectContainer() {
 			element.setSelected(false);
 		})
 		currentProject = projectItems[index];
-		currentProject.setSelected(true);
+        if (currentProject != null) {
+			currentProject.setSelected(true);
+		}
     }
     function getCurrentProject() {
         return currentProject;
     }
 	return {
 		addItem,
+		removeItem,
 		getItems,
 		selectProject,
 		getCurrentProject,

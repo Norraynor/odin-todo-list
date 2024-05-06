@@ -1,12 +1,14 @@
 function createTodoItem(title,description,dueDate,priority) {
     let complete = false;
     let selected = false;
+
     function getSelected() {
         return selected;
     }
-    function setSelected(select) {
-        selected = select;
+    function setSelected(bool) {
+        selected = bool;
     }
+
     return {
         title,
         description,

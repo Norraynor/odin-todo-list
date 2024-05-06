@@ -4,7 +4,7 @@ function createProjectItem(title, description) {
     let todoItems = [];
     let complete = false;
     let selected = false;
-    let currentTodo = todoItems[0] !=null ? todoItems[0] : null;
+    let currentTodo = (todoItems[0] !=null) ? todoItems[0] : null;
 
     function addItem(title, description, dueDate, priority) {
         let item = todoItem.createTodoItem(title, description, dueDate, priority);
@@ -12,8 +12,10 @@ function createProjectItem(title, description) {
     }
     function removeItem(index) {
         todoItems.splice(index, 1);
-        currentTodo = todoItems[0] != null ? todoItems[0] : null;
-        currentTodo.setSelected(true);
+        currentTodo = (todoItems[0] != null) ? todoItems[0] : null;
+        if (currentTodo != null) {
+            currentTodo.setSelected(true);            
+        }
     }
     function getItems() {
         return todoItems
@@ -24,7 +26,9 @@ function createProjectItem(title, description) {
     function selectTodo(index) {
         deselectTodo();
         currentTodo = todoItems[index];
-		currentTodo.setSelected(true);
+        if (currentTodo != null) {
+            currentTodo.setSelected(true);
+        }
     }
     function deselectTodo() {
         todoItems.forEach((element) => {
@@ -37,8 +41,8 @@ function createProjectItem(title, description) {
     function getSelected() {
         return selected;
     }
-    function setSelected(select) {
-        selected = select;
+    function setSelected(bool) {
+        selected = bool;
     }
     function setItemComplete(index, bool) {
         todoItem.setComplete(todoItems[index], bool);
