@@ -37,6 +37,9 @@ function drawProjectContainer(projectContainer){
     newButton.classList.add('add-project');
     newButton.classList.add('button-3');
     newButton.textContent = '+ NEW +';
+    newButton.addEventListener('click', (e) => {
+        //add new project - open up form/dialog and submit or cancel
+    })
     container.appendChild(newButton);
     //add projects here
     const currentProjects = getProjectContainer().getItems();
