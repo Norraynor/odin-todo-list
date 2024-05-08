@@ -20,8 +20,8 @@ function drawMainContainer() {
     main.classList.add('main-container');
     //add project container // todo container // todo details
     main.appendChild(drawProjectContainer(getProjectContainer()));
-    main.appendChild(drawTodoContainer(getProjectContainer().getCurrentProject()));
-    main.appendChild(drawDetailsContainer(getProjectContainer().getCurrentProject().getCurrentTodo()))
+    main.appendChild(drawTodoContainer(getProjectContainer()));
+    main.appendChild(drawDetailsContainer(getProjectContainer()))
     return main;
 }
 
@@ -53,7 +53,8 @@ function drawProjectContainer(projectContainer){
     return container;
 }
 
-function drawTodoContainer(project) {
+function drawTodoContainer(projectContainer) {
+    let project = projectContainer.getCurrentProject();
     const todoContainer = document.createElement('div');
     todoContainer.classList.add('todo-container');
     const newButton = document.createElement("button");
@@ -95,12 +96,16 @@ function drawTodoContainer(project) {
     return todoContainer;
 }
 
-function drawDetailsContainer(todo) {
-    const detailsContainer = document.createElement('div');
-    detailsContainer.classList.add('details-container');    
-    detailsContainer.appendChild(drawTodoDetails.drawTodoDetails(todo));
+function drawDetailsContainer(projectContainer) {
+    let todo;
+    if (projectContainer.getCurrentProject() != null) {
+	    todo = projectContainer.getCurrentProject().getCurrentTodo();        
+    }
+	const detailsContainer = document.createElement("div");
+	detailsContainer.classList.add("details-container");
+	detailsContainer.appendChild(drawTodoDetails.drawTodoDetails(todo));
 
-    return detailsContainer;
+	return detailsContainer;
 }
 
 export { setProjectContainer, drawMainContainer, setTopElement };
