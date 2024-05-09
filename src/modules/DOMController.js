@@ -1,7 +1,7 @@
 import { drawProject } from './drawProject';
 import { drawTodoCard } from './drawTodo';
 import * as drawTodoDetails from './drawTodoDetails'
-
+import { createForm } from './drawForm';
 let mainContainer = null;
 let projects;
 
@@ -39,6 +39,7 @@ function drawProjectContainer(projectContainer){
     newButton.textContent = '+ NEW +';
     newButton.addEventListener('click', (e) => {
         //add new project - open up form/dialog and submit or cancel
+        form.showModal()
     })
     container.appendChild(newButton);
     //add projects here
@@ -53,6 +54,8 @@ function drawProjectContainer(projectContainer){
         })
         container.appendChild(project);
     });
+    const form = createForm('project', projectContainer.getItems()[0]);
+    container.appendChild(form);
     return container;
 }
 
