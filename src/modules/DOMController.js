@@ -54,7 +54,7 @@ function drawProjectContainer(projectContainer){
         })
         container.appendChild(project);
     });
-    const form = createForm('project', projectContainer.getItems()[0]);
+    const form = createForm('project', projectContainer);
     container.appendChild(form);
     return container;
 }

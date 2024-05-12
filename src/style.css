@@ -248,3 +248,18 @@ body{
 .selected{
     background-color: red;
 }
+fieldset div{
+    padding: 8px;
+}
+.form-grid{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: space-between;
+}
+.form-buttons{
+    padding:8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    gap: 32px;
+}
