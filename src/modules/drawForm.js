@@ -1,6 +1,9 @@
    
 function createForm(itemName, container) {
     let item = container.getItems()[0];
+    if (itemName === 'todo') {
+        item = container.getItems()[0].getItems()[0];
+    }
 	const dialog = document.createElement("dialog");
 	dialog.classList.add("form");
     const form = document.createElement("form");
@@ -21,6 +24,22 @@ function createForm(itemName, container) {
         //for = same as input id
         const input = document.createElement("input");
         input.type = 'text';
+        switch (key) {
+            case "complete":
+                input.type = "checkbox";
+                break;
+            case "priority":
+                input.type = "number";
+                break;
+            case "dueDate":
+                input.type = "date";
+                break;
+            default:
+                break;
+        }
+        if (key === 'complete') {
+        }
+
         input.id = key;
         input.name = key;
         //id = same as for in label
@@ -37,14 +56,20 @@ function createForm(itemName, container) {
         e.preventDefault();
         //handle form data here
         let inputs = fieldset.querySelectorAll('input');
-        let title,description;
+        let title,description,dueDate,priority;
         for (const element of inputs) {
             element.id == 'title' ? (title = element.value) :title;
             element.id == 'description' ? (description = element.value) : description;
+            element.id == "dueDate" ? (dueDate = element.value) : dueDate;
+            element.id == "priority" ? (priority = element.value) : priority;
         }
         if (itemName == 'project') {
             container.addItem(title,description);            
         }        
+        if (itemName == 'todo') {            
+            container.getCurrentProject().addItem(title, description, dueDate, priority); 
+        }
+        dialog.close();
     })
     const closeButton = document.createElement("button");
     closeButton.textContent = 'Close';

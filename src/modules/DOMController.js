@@ -40,6 +40,9 @@ function drawProjectContainer(projectContainer){
     newButton.addEventListener('click', (e) => {
         //add new project - open up form/dialog and submit or cancel
         form.showModal()
+        form.addEventListener('close', () => {
+            reDraw();
+        })
     })
     container.appendChild(newButton);
     //add projects here
@@ -67,6 +70,13 @@ function drawTodoContainer(projectContainer) {
     newButton.classList.add("add-todo");
     newButton.classList.add("button-3");
     newButton.textContent = "+ ADD +";
+    newButton.addEventListener("click", (e) => {
+			//add new project - open up form/dialog and submit or cancel
+			form.showModal();
+			form.addEventListener("close", () => {
+				reDraw();
+			});
+		});
     todoContainer.appendChild(newButton);
     const header = document.createElement('div');
     header.classList.add('todo-header');
@@ -99,6 +109,8 @@ function drawTodoContainer(projectContainer) {
 			todoContainer.appendChild(todo);
 		});
     }
+    const form = createForm("todo", projectContainer);
+    todoContainer.appendChild(form);
     return todoContainer;
 }
 
