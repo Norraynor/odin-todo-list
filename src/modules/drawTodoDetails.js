@@ -15,6 +15,9 @@ function drawTodoDetails(todo) {
 		title.textContent = todo.title;
 		dueDate.textContent = todo.dueDate;
 		priority.textContent = todo.priority;
+		if (todo.isUrgent()) {
+			priority.textContent = 'URGENT!';
+		}
 		description.textContent = todo.description;
 	}
 	titleContainer.appendChild(title);

@@ -8,9 +8,11 @@ function component() {
 	container.addItem('defult', 'default project');
 	container.selectProject(0);
 	let currentProject = container.getCurrentProject();
-	
+
 	currentProject.addItem('example', 'example todo', new Date().toDateString(), 1);
 	currentProject.selectTodo(0);
+	let currentTodo = currentProject.getCurrentTodo();
+	console.log(currentTodo.isUrgent());
 	DOMController.setProjectContainer(container);
 	element.appendChild(DOMController.drawMainContainer());
 	DOMController.setTopElement(element);

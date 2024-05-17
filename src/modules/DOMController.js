@@ -103,7 +103,8 @@ function drawTodoContainer(projectContainer) {
 				getProjectContainer()
 					.getCurrentProject()
 					.selectTodo(+todo.getAttribute("index"));
-				//trigger refresh of todos
+                //trigger refresh of todos
+                console.log(getProjectContainer().getCurrentProject().getCurrentTodo().isUrgent())
 				reDraw();
 			});
 			todoContainer.appendChild(todo);

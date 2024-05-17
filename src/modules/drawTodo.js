@@ -8,6 +8,9 @@ function drawTodoCard(project, todo,index) {
     const priority = document.createElement("div");
     priority.classList.add("todo-priority");
     priority.textContent = todo.priority;
+    if (todo.isUrgent()) {
+			priority.textContent = "URGENT!";
+		}
     const dueDate = document.createElement('div');
     dueDate.classList.add('todo-date');
     dueDate.textContent = todo.dueDate;
