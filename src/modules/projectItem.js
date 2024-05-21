@@ -1,7 +1,7 @@
 import * as todoItem from './todoItem';
 import * as saveLoad from './saveLoad';
 
-function createProjectItem(title, description) {
+function createProjectItem(projectTitle, description) {
     let todoItems = [];
     let complete = false;
     let selected = false;
@@ -10,7 +10,7 @@ function createProjectItem(title, description) {
     function addItem(title, description, dueDate, priority) {
         let item = todoItem.createTodoItem(title, description, dueDate, priority);
         todoItems.push(item);
-        saveLoad.saveTodo(title,todoItems);
+        saveLoad.saveTodo(projectTitle,todoItems);
     }
     function removeItem(index) {
         todoItems.splice(index, 1);
@@ -63,7 +63,7 @@ function createProjectItem(title, description) {
         }
     }
     return {
-			title,
+			title: projectTitle,
 			description,
 			addItem,
 			removeItem,

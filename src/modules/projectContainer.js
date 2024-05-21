@@ -1,4 +1,5 @@
 import * as projectItem from './projectItem';
+import * as saveLoad from "./saveLoad";
 
 function createProjectContainer() {
 	let projectItems = [];
@@ -7,6 +8,7 @@ function createProjectContainer() {
 	function addItem(title, description) {
 		let item = projectItem.createProjectItem(title, description);
 		projectItems.push(item);
+        saveLoad.saveProject(projectItems);
 	}
     function removeItem(index) {
 		projectItems.splice(index, 1);

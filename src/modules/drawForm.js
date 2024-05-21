@@ -7,7 +7,6 @@ function createForm(itemName, container) {
 	const dialog = document.createElement("dialog");
 	dialog.classList.add("form");
     const form = document.createElement("form");
-    form.action = "https://httpbin.org/post";
     form.method = 'post';
 	const fieldset = document.createElement("fieldset");
 	const legend = document.createElement("legend");
