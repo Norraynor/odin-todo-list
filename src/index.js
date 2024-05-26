@@ -8,8 +8,8 @@ function component() {
 	const element = document.createElement("div");
 	const container = projectContainer.createProjectContainer();
 	saveLoad.loadProject(container);
-	// container.addItem('defult', 'default project');
-	// container.selectProject(0);
+	//container.addItem('defult', 'default project');
+	container.selectProject(0);
 	// let currentProject = container.getCurrentProject();
 
 	// currentProject.addItem('example', 'example todo', new Date().toDateString(), 1);

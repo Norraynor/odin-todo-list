@@ -133,18 +133,32 @@ body{
 }
 .details-header{
     display: grid;
-    grid-template-columns: 5fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 2fr 1fr;
     align-items: center;
     justify-items: center;
+    align-items: end;
+    grid-template-areas: 'title priority'
+    'date priority';
+}
+.details-priority{
+    grid-area: priority;
+    align-self: center;
 }
 .details-title{
     justify-self: start;
+    font-size: 1.5rem;
+    font-weight: bold;
     padding: 8px;
+    grid-area: title;
 }
 .details-date{
     justify-self: start;
+    font-size: .7rem;
+    font-style: italic;
     padding: 8px;
+    align-self: self-start;
+    grid-area: date;
 }
 .details-description{
     padding:8px;

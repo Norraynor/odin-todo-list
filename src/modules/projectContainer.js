@@ -8,7 +8,8 @@ function createProjectContainer() {
 	function addItem(title, description) {
 		let item = projectItem.createProjectItem(title, description);
 		projectItems.push(item);
-        saveLoad.saveProject(projectItems);
+		saveLoad.saveProject(projectItems);
+		return item;
 	}
     function removeItem(index) {
 		projectItems.splice(index, 1);

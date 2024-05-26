@@ -16,13 +16,20 @@ function loadProject(container) {
     parsedProjectContainer.forEach(project => {
         console.log(project);
         //add project to container
-        container.addItem(project.title, project.description)
+        let projectItem = container.addItem(project.title, project.description)
         //add todos to project
         let todos = localStorage.getItem(project.title);
         const parsedTodos = JSON.parse(todos);
-        parsedTodos.forEach(todo => {
-            project.addItem(todo.title,todo.description,todo.dueDate,todo.priority);            
-        });
+        if (parsedTodos !== null) {
+            parsedTodos.forEach((todo) => {
+                        projectItem.addItem(
+                            todo.title,
+                            todo.description,
+                            todo.dueDate,
+                            todo.priority
+                        );
+                    });            
+        }
     });
 }
 

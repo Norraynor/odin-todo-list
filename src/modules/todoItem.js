@@ -1,6 +1,6 @@
 import * as dateFns from '../../node_modules/date-fns'
 
-function createTodoItem(title, description, dueDate, priority) {
+function createTodoItem(title ='', description='', dueDate=new Date(), priority = 9) {
 	let complete = false;
     let selected = false;
     dueDate = new Date(dueDate).toDateString();

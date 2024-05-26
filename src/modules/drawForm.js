@@ -1,8 +1,10 @@
-   
+import * as todoItem from "./todoItem";
+import * as projectItem from "./projectItem";
+
 function createForm(itemName, container) {
-    let item = container.getItems()[0];
+    let item = projectItem.createProjectItem();
     if (itemName === 'todo') {
-        item = container.getItems()[0].getItems()[0];
+        item = todoItem.createTodoItem();
     }
 	const dialog = document.createElement("dialog");
 	dialog.classList.add("form");
@@ -13,41 +15,45 @@ function createForm(itemName, container) {
 	legend.textContent = itemName.toUpperCase();
     fieldset.appendChild(legend);
     //add to form in for loop
-    let properties = Object.getOwnPropertyNames(item).filter(
-        (element) => typeof item[element] !== "function"
-    );
-    properties.forEach((key) => {
-        const label = document.createElement("label");
-        label["for"] = key;
-        label.textContent = key;
-        //for = same as input id
-        const input = document.createElement("input");
-        input.type = 'text';
-        switch (key) {
-            case "complete":
-                input.type = "checkbox";
-                break;
-            case "priority":
-                input.type = "number";
-                break;
-            case "dueDate":
-                input.type = "date";
-                break;
-            default:
-                break;
-        }
-        if (key === 'complete') {
-        }
+    let properties;
+    if (item !== undefined) {
+			console.log(item);
+			properties = Object.getOwnPropertyNames(item).filter(
+				(element) => typeof item[element] !== "function"
+			);
+			properties.forEach((key) => {
+				const label = document.createElement("label");
+				label["for"] = key;
+				label.textContent = key;
+				//for = same as input id
+				const input = document.createElement("input");
+				input.type = "text";
+				switch (key) {
+					case "complete":
+						input.type = "checkbox";
+						break;
+					case "priority":
+						input.type = "number";
+						break;
+					case "dueDate":
+						input.type = "date";
+						break;
+					default:
+						break;
+				}
+				if (key === "complete") {
+				}
 
-        input.id = key;
-        input.name = key;
-        //id = same as for in label
-        const div = document.createElement("div");
-        div.classList.add('form-grid');
-        div.appendChild(label);
-        div.appendChild(input);
-        fieldset.appendChild(div);
-    });
+				input.id = key;
+				input.name = key;
+				//id = same as for in label
+				const div = document.createElement("div");
+				div.classList.add("form-grid");
+				div.appendChild(label);
+				div.appendChild(input);
+				fieldset.appendChild(div);
+			});
+		}
     const confirmButton = document.createElement("button");
     confirmButton.textContent = 'Confirm';
     confirmButton.type = 'submit';

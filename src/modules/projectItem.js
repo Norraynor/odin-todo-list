@@ -1,7 +1,7 @@
 import * as todoItem from './todoItem';
 import * as saveLoad from './saveLoad';
 
-function createProjectItem(projectTitle, description) {
+function createProjectItem(projectTitle='', description='') {
     let todoItems = [];
     let complete = false;
     let selected = false;
